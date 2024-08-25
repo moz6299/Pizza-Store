@@ -8,7 +8,7 @@ function Menu() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
       <h2 className="mb-8 text-3xl font-bold text-gray-800">Our Menu</h2>
-      <ul className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <ul className="flex flex-col gap-8">
         {menuData.map((pizza) => (
           <MenuItem pizza={pizza} key={pizza.id} />
         ))}

@@ -25,46 +25,44 @@ function MenuItem({ pizza }) {
 
   return (
     <li
-      className={`flex flex-col overflow-hidden rounded-lg border shadow-lg transition-transform transform hover:scale-105 ${
+      className={`flex flex-col overflow-hidden rounded-lg border shadow-lg transform hover:scale-105 ${
         soldOut ? 'bg-gray-300' : 'bg-white'
       } 
-      w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2`}
+      w-full my-4 p-4`}
     >
-      <img
-        src={imageUrl}
-        alt={name}
-        className="h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72 w-full object-cover"
-      />
-      <div className="flex flex-col flex-1 p-4 space-y-3">
-        <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-gray-800">
-          {name}
-        </h3>
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600">
-          {ingredients.join(', ')}
-        </p>
-        <div className="mt-auto flex items-center justify-between">
-          {!soldOut ? (
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900">
-              {formatCurrency(unitPrice)}
-            </p>
-          ) : (
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-red-600">
-              Sold out
-            </p>
-          )}
+      <div className="flex flex-col md:flex-row md:items-center md:space-x-4">
+        <img
+          src={imageUrl}
+          alt={name}
+          className="w-full md:w-1/3 h-40 sm:h-48 md:h-auto object-cover rounded-lg"
+        />
+        <div className="flex flex-col flex-1 mt-4 md:mt-0">
+          <h3 className="text-lg md:text-xl font-semibold text-gray-800">
+            {name}
+          </h3>
+          <p className="text-sm text-gray-600 mb-4">{ingredients.join(', ')}</p>
+          <div className="mt-auto flex items-center justify-between">
+            {!soldOut ? (
+              <p className="text-lg font-bold text-gray-900">
+                {formatCurrency(unitPrice)}
+              </p>
+            ) : (
+              <p className="text-lg font-bold text-red-600">Sold out</p>
+            )}
 
-          {isItemInCart ? (
-            <div className="flex items-center space-x-2">
-              <UpdateItemQuantity id={id} />
-              <DeleteItem id={id} />
-            </div>
-          ) : (
-            !soldOut && (
-              <Button onClick={handleAddToCart} className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl">
-                Add To Cart
-              </Button>
-            )
-          )}
+            {isItemInCart ? (
+              <div className="flex items-center space-x-2">
+                <UpdateItemQuantity id={id} />
+                <DeleteItem id={id} />
+              </div>
+            ) : (
+              !soldOut && (
+                <Button onClick={handleAddToCart} className="text-sm md:text-base">
+                  Add To Cart
+                </Button>
+              )
+            )}
+          </div>
         </div>
       </div>
     </li>

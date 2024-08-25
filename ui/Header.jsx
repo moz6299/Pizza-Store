@@ -5,8 +5,10 @@ import UserName from '../features/user/UserName'
 
 const Header = () => {
   return (
-    <header className='bg-yellow-500 border-b border-stone-200 px-4 py-3 flex items-center justify-between'>
-      <Link to="/" className='text-xl tracking-widest font-semibold uppercase'  >Fast Piza Co.</Link>
+    <header className='bg-yellow-500 border-b border-stone-200 px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4'>
+      <Link to="/" className='text-xl tracking-widest font-semibold uppercase md:text-2xl lg:text-3xl'>
+        Fast Pizza
+      </Link>
       <SearchOrder />
       <UserName />
     </header>
